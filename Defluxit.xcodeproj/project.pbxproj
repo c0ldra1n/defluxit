@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53961F491E6A9C6000F6594E /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 53961F471E6A9C6000F6594E /* Makefile */; };
+		53961F4B1E6A9CDB00F6594E /* Tweak.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 53961F481E6A9C6000F6594E /* Tweak.xmi */; };
+		53961F511E6A9F7B00F6594E /* DFXRootListController.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 53961F4E1E6A9F7B00F6594E /* DFXRootListController.xmi */; };
+		53961F521E6A9F7B00F6594E /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 53961F501E6A9F7B00F6594E /* Makefile */; };
+		53961F581E6AA03D00F6594E /* CRHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53961F571E6AA03D00F6594E /* CRHeaderView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		53961F371E6A9BB100F6594E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		53961F391E6A9BB100F6594E /* libDefluxit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDefluxit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		53961F451E6A9C6000F6594E /* control */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
+		53961F461E6A9C6000F6594E /* Defluxit.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Defluxit.plist; sourceTree = "<group>"; };
+		53961F471E6A9C6000F6594E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		53961F481E6A9C6000F6594E /* Tweak.xmi */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Tweak.xmi; sourceTree = "<group>"; };
+		53961F4A1E6A9CBB00F6594E /* Tweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweak.h; sourceTree = "<group>"; };
+		53961F4D1E6A9F7B00F6594E /* DFXRootListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFXRootListController.h; path = preferences/DFXRootListController.h; sourceTree = "<group>"; };
+		53961F4E1E6A9F7B00F6594E /* DFXRootListController.xmi */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = DFXRootListController.xmi; path = preferences/DFXRootListController.xmi; sourceTree = "<group>"; tabWidth = 3; };
+		53961F4F1E6A9F7B00F6594E /* entry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = entry.plist; path = preferences/entry.plist; sourceTree = "<group>"; };
+		53961F501E6A9F7B00F6594E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = preferences/Makefile; sourceTree = "<group>"; };
+		53961F541E6A9F9B00F6594E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = preferences/Resources/Info.plist; sourceTree = "<group>"; };
+		53961F551E6A9F9B00F6594E /* Root.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Root.plist; path = preferences/Resources/Root.plist; sourceTree = "<group>"; };
+		53961F561E6AA03D00F6594E /* CRHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRHeaderView.h; path = preferences/CRHeaderView.h; sourceTree = "<group>"; };
+		53961F571E6AA03D00F6594E /* CRHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRHeaderView.m; path = preferences/CRHeaderView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53961F361E6A9BB100F6594E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53961F301E6A9BB100F6594E = {
+			isa = PBXGroup;
+			children = (
+				53961F451E6A9C6000F6594E /* control */,
+				53961F461E6A9C6000F6594E /* Defluxit.plist */,
+				53961F471E6A9C6000F6594E /* Makefile */,
+				53961F4A1E6A9CBB00F6594E /* Tweak.h */,
+				53961F481E6A9C6000F6594E /* Tweak.xmi */,
+				53961F531E6A9F8200F6594E /* Preferences */,
+				53961F3A1E6A9BB100F6594E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		53961F3A1E6A9BB100F6594E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53961F391E6A9BB100F6594E /* libDefluxit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53961F531E6A9F8200F6594E /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				53961F4D1E6A9F7B00F6594E /* DFXRootListController.h */,
+				53961F4E1E6A9F7B00F6594E /* DFXRootListController.xmi */,
+				53961F561E6AA03D00F6594E /* CRHeaderView.h */,
+				53961F571E6AA03D00F6594E /* CRHeaderView.m */,
+				53961F541E6A9F9B00F6594E /* Info.plist */,
+				53961F551E6A9F9B00F6594E /* Root.plist */,
+				53961F4F1E6A9F7B00F6594E /* entry.plist */,
+				53961F501E6A9F7B00F6594E /* Makefile */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53961F381E6A9BB100F6594E /* Defluxit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53961F421E6A9BB100F6594E /* Build configuration list for PBXNativeTarget "Defluxit" */;
+			buildPhases = (
+				53961F351E6A9BB100F6594E /* Sources */,
+				53961F361E6A9BB100F6594E /* Frameworks */,
+				53961F371E6A9BB100F6594E /* CopyFiles */,
+				53961F4C1E6A9CFE00F6594E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Defluxit;
+			productName = Defluxit;
+			productReference = 53961F391E6A9BB100F6594E /* libDefluxit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53961F311E6A9BB100F6594E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = c0ldra1n;
+				TargetAttributes = {
+					53961F381E6A9BB100F6594E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L53UBUP7SC;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 53961F341E6A9BB100F6594E /* Build configuration list for PBXProject "Defluxit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 53961F301E6A9BB100F6594E;
+			productRefGroup = 53961F3A1E6A9BB100F6594E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53961F381E6A9BB100F6594E /* Defluxit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53961F4C1E6A9CFE00F6594E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile;\nmake package install;";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53961F351E6A9BB100F6594E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53961F491E6A9C6000F6594E /* Makefile in Sources */,
+				53961F4B1E6A9CDB00F6594E /* Tweak.xmi in Sources */,
+				53961F521E6A9F7B00F6594E /* Makefile in Sources */,
+				53961F511E6A9F7B00F6594E /* DFXRootListController.xmi in Sources */,
+				53961F581E6AA03D00F6594E /* CRHeaderView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		53961F401E6A9BB100F6594E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		53961F411E6A9BB100F6594E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		53961F431E6A9BB100F6594E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = L53UBUP7SC;
+				HEADER_SEARCH_PATHS = /opt/theos/include;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		53961F441E6A9BB100F6594E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = L53UBUP7SC;
+				HEADER_SEARCH_PATHS = /opt/theos/include;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53961F341E6A9BB100F6594E /* Build configuration list for PBXProject "Defluxit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53961F401E6A9BB100F6594E /* Debug */,
+				53961F411E6A9BB100F6594E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53961F421E6A9BB100F6594E /* Build configuration list for PBXNativeTarget "Defluxit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53961F431E6A9BB100F6594E /* Debug */,
+				53961F441E6A9BB100F6594E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53961F311E6A9BB100F6594E /* Project object */;
+}

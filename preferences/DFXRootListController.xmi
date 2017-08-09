@@ -1,0 +1,82 @@
+#include "DFXRootListController.h"
+
+#define kCRBundlePath @"/Library/PreferenceBundles/Defluxit.bundle"
+
+@implementation DFXRootListController
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setupCephei];
+    }
+    return self;
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [self setupCephei];
+    }
+    
+    return self;
+    
+}
+
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        [self setupCephei];
+    }
+    
+    return self;
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self clearCache];
+    [self reload];
+    [super viewWillAppear:animated];
+}
+
+-(void)setupCephei{
+    
+    HBAppearanceSettings *appearanceSettings = [[HBAppearanceSettings alloc] init];
+    appearanceSettings.tintColor = [UIColor colorWithRed:0.58 green:0.81 blue:0.86 alpha:1.0];
+    appearanceSettings.invertedNavigationBar = true;
+    self.hb_appearanceSettings = appearanceSettings;
+    
+}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    UIImage *backgroundImage = [UIImage imageWithContentsOfFile:[kCRBundlePath stringByAppendingPathComponent:@"header-background.png"]];
+    UIImage *overlayImage = [UIImage imageWithContentsOfFile:[kCRBundlePath stringByAppendingPathComponent:@"header-overlay.png"]];
+    
+    self.table.tableHeaderView = [[CRHeaderView alloc] initWithBackground:backgroundImage overlay:overlayImage];
+    
+    self.table.tableHeaderView.frame = CGRectMake(0, 0, self.table.bounds.size.width, kCRHeaderHeight);
+    
+}
+
+- (NSArray *)specifiers {
+	if (!_specifiers) {
+		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
+	}
+
+	return _specifiers;
+}
+
+-(void)respring{
+    system("killall -9 SpringBoard");
+}
+
+-(void)sendTestNotification{
+    CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("io.c0ldra1n.defluxit-testnotification"), nil, nil, true);
+}
+
+@end

@@ -1,0 +1,185 @@
+
+#import "Tweak.h"
+
+#import <objc/runtime.h>
+
+#ifndef _iOS_kCFCoreFoundationVersionNumber_iOS_10_0_0
+#define kCFCoreFoundationVersionNumber_iOS_10_0 1348.00
+#endif
+
+#ifndef THEOSBUILD
+#define NotificationView NCNotificationListCollectionView
+#endif
+
+static NSString *const kDFXEnabled = @"DFXEnabled";
+static NSString *const kDFXTopFadePercentage = @"DFXTopFadePercentage";
+static NSString *const kDFXBottomFadePercentage = @"DFXBottomFadePercentage";
+
+static BOOL enabled;
+static float topFadePercentage;
+static float bottomFadePercentage;
+
+static BBServer *sharedBBServer;
+
+HOOK(BBServer)
+
+-(id)init{
+    self = ORIG();
+    sharedBBServer = self;
+    return self;
+}
+
+END()
+
+HOOK(NotificationView)
+
+-(void)layoutSubviews{
+    
+    ORIG();
+    
+    if(enabled){
+        
+        UIView *UIViewSelf = (UIView *)self;
+        
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.frame = UIViewSelf.bounds;
+        
+        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+        gradientLayer.frame = CGRectMake(UIViewSelf.bounds.origin.x, 0,
+                                         UIViewSelf.bounds.size.width, UIViewSelf.bounds.size.height);
+        
+        CGColorRef transparent = [UIColor clearColor].CGColor;
+        CGColorRef opaque = [UIColor blackColor].CGColor;
+        gradientLayer.colors = @[(__bridge id)transparent, (__bridge id)opaque, (__bridge id)opaque, (__bridge id)transparent];
+        gradientLayer.locations = @[@(0), @(topFadePercentage), @(1.0 - bottomFadePercentage), @(1.0)];
+        
+        [maskLayer addSublayer:gradientLayer];
+        
+        UIViewSelf.layer.mask = maskLayer;
+        
+    }
+    
+}
+
+END()
+
+void reloadPreferences(){
+    
+    NSDictionary *prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/io.c0ldra1n.defluxit-prefs.plist"];
+    
+    if (prefs) {
+        
+        enabled = [([prefs objectForKey:kDFXEnabled] ?: @(YES)) boolValue];
+        topFadePercentage = [([prefs objectForKey:kDFXTopFadePercentage] ?: @(0.2)) floatValue];
+        bottomFadePercentage = [([prefs objectForKey:kDFXBottomFadePercentage] ?: @(0.2)) floatValue];
+        
+    }
+    
+}
+
+void sendTestNotification(){
+    
+    [[GET_CLASS(SBLockScreenManager) sharedInstance] lockUIFromSource:1 withOptions:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        
+        if(kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_10_0){
+            
+            id destination = [[(SpringBoard *)[GET_CLASS(SpringBoard) sharedApplication] notificationDispatcher] dashBoardDestination];
+            
+            NSArray *sectionIDs = @[@"com.apple.MobileSMS", @"com.apple.mobilephone", @"com.apple.mobilecal", @"com.apple.mobiletimer", @"com.apple.facetime", @"com.apple.gamecenter",@"com.apple.tips",@"com.apple.AppStore"];
+            
+            for (int i = 0; i<sectionIDs.count; i++) {
+                
+                /* Create the notification. */
+                NCMutableNotificationRequest *req;
+                
+                if (i+1 == sectionIDs.count) {
+                    
+                    req = [[GET_CLASS(NCNotificationRequest) notificationRequestWithSectionId:sectionIDs[i]
+                                                                               notificationId:[sectionIDs[i] stringByAppendingString:@"-defluxit"]
+                                                                                     threadId:@"DEFLUXIT"
+                                                                                        title:@"DEFLUXIT"
+                                                                                      message:@"Just roll with it"
+                                                                                    timestamp:[NSDate date] /* now, can be later */
+                                                                                  destination:destination] mutableCopy];
+                    
+                    req.defaultAction = [[GET_CLASS(NCMutableNotificationAction) alloc] init];
+                    
+                    [(NCMutableNotificationAction *)req.defaultAction setLaunchURL:[NSURL URLWithString:@"https://www.youtube.com/watch?v=dQw4w9WgXcQ"]];
+                    
+                    
+                }else{
+                    
+                    req = [[GET_CLASS(NCNotificationRequest) notificationRequestWithSectionId:sectionIDs[i]
+                                                                               notificationId:[sectionIDs[i] stringByAppendingString:@"-defluxit"]
+                                                                                     threadId:@"DEFLUXIT"
+                                                                                        title:@"DEFLUXIT"
+                                                                                      message:@"Test Notification"
+                                                                                    timestamp:[NSDate date] /* now, can be later */
+                                                                                  destination:destination] mutableCopy];
+                    
+                    req.defaultAction = [[GET_CLASS(NCMutableNotificationAction) alloc] init];
+                    
+                    [(NCMutableNotificationAction *)req.defaultAction setLaunchURL:[NSURL URLWithString:@"prefs://"]];
+                }
+                
+                [(NCMutableNotificationAction *)req.defaultAction setActionRunner:(id<NCNotificationActionRunner>)[[GET_CLASS(NCUserAlertDefaultActionRunner) alloc] init]];
+                
+                req.defaultAction.identifier = [sectionIDs[i] stringByAppendingString:@"-defluxit"];
+                
+                NSLog(@"%@", req);
+                NSLog(@"%@", req.defaultAction);
+                
+                NCMutableNotificationOptions *opt = [[GET_CLASS(NCMutableNotificationOptions) alloc] init];
+                
+                [opt setDismissAutomatically:YES];
+                [req setOptions:opt];
+                
+                NCMutableNotificationContent *mct = [[req content] mutableCopy];
+                UIImage *image = [UIImage imageNamed:@"WewLadNotificationIcon"];
+                [mct setIcon:image];
+                [req setContent:mct];
+                [destination postNotificationRequest:req forCoalescedNotification:nil];
+                
+            }
+            
+        }else{
+            
+            NSArray *sectionIDs = @[@"com.apple.MobileSMS", @"com.apple.mobilephone", @"com.apple.mobilecal", @"com.apple.mobiletimer", @"com.apple.facetime", @"com.apple.gamecenter",@"com.apple.tips",@"com.apple.AppStore"];
+            
+            for (int i = 0; i<sectionIDs.count; i++) {
+                BBBulletin *bulletin = [[GET_CLASS(BBBulletin) alloc] init];
+                bulletin.title = @"Defluxit";
+                bulletin.sectionID = sectionIDs[i];
+                bulletin.bulletinID = [sectionIDs[i] stringByAppendingString:@"-defluxit"];
+                
+                if(i+1 == sectionIDs.count){
+                    bulletin.message = @"Just roll with it";
+                    bulletin.defaultAction = [GET_CLASS(BBAction) actionWithLaunchURL:[NSURL URLWithString:@"https://www.youtube.com/watch?v=dQw4w9WgXcQ"]];
+                }else{
+                    bulletin.message = @"This is a test Message!";
+                    bulletin.defaultAction = [GET_CLASS(BBAction) actionWithLaunchURL:[NSURL URLWithString:@"prefs://"]];
+                }
+                
+                bulletin.date = [NSDate date];
+                
+                [sharedBBServer publishBulletin:bulletin destinations:14 alwaysToLockScreen:NO];
+            }
+            
+        }
+    });
+    
+}
+
+CTOR(){
+    
+    Class notificationViewClass = (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_10_0 ? objc_getClass("NCNotificationListCollectionView") : objc_getClass("SBLockScreenNotificationTableView"));
+    
+    INIT(NotificationView=notificationViewClass);
+    
+    reloadPreferences();
+    
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)sendTestNotification, CFSTR("io.c0ldra1n.defluxit-testnotification"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    
+}
